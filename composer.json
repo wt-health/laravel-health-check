@@ -1,0 +1,32 @@
+{
+    "name": "wthealth/laravel-health-check",
+    "description": "Check versions of vital parts of the application",
+    "require": {
+        "spatie/laravel-package-tools": "^1.16.4",
+        "composer/composer": "^2",
+        "spatie/laravel-health": "^1.27",
+        "php": "^8.2|^8.3",
+        "illuminate/support": "^9.0|^10.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Webtools\\LaravelHealthCheck\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webtools\\LaravelHealthCheck\\LaravelHealthCheckServiceProvider"
+            ]
+        }
+    },
+    "authors": [
+        {
+            "name": "Fernando Guedes",
+            "email": "fernando@webtools.co.nz"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

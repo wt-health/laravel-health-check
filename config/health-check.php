@@ -13,5 +13,4 @@ return [
      * Packages to have versions checked against, comma limited (,)
      */
     'packages' => explode(',', env('HEALTH_API_PACKAGES', 'composer/composer')),
-
 ];

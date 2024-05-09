@@ -28,5 +28,12 @@
         }
     ],
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "require-dev": {
+        "webtoolshealth/php-coding-standard": "^1.0"
+    },
+    "scripts": {
+        "ecs": "vendor/bin/ecs check",
+        "ecs-fix": "vendor/bin/ecs check --fix"
+    }
 }

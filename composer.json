@@ -8,6 +8,7 @@
         "php": "^8.2|^8.3",
         "illuminate/support": "^9.0|^10.0"
     },
+    "homepage": "https://github.com/wt-health/laravel-health-check",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -24,16 +25,15 @@
     "authors": [
         {
             "name": "Fernando Guedes",
-            "email": "fernando@webtools.co.nz"
+            "email": "fernando@webtools.co.nz",
+            "homepage": "https://www.webtools.co.nz",
+            "role": "Developer"
         }
     ],
     "minimum-stability": "stable",
     "prefer-stable": true,
-    "require-dev": {
-        "webtoolshealth/php-coding-standard": "^1.0"
-    },
     "scripts": {
-        "ecs": "vendor/bin/ecs check",
-        "ecs-fix": "vendor/bin/ecs check --fix"
+        "pint": "vendor/bin/pint --test",
+        "pint-fix": "vendor/bin/pint"
     }
 }

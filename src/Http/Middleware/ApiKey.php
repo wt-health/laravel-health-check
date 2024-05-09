@@ -13,7 +13,7 @@ class ApiKey
     public function handle(Request $request, Closure $next): Response
     {
         $key = $request->query('key');
-        if (null == $key || $key !== config('health-check.key')) {
+        if ($key == null || $key !== config('health-check.key')) {
             return response()->json(['data' => 'forbidden'], 403);
         }
 

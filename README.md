@@ -25,7 +25,7 @@ serverless.yaml
             - ${bref-extra:redis-php-83}
         events:
             - schedule:
-                  rate: cron(0 20 * * ? *)
+                  rate: rate(12 hours)
                   input: '"health:check"'
 ```
 
@@ -36,7 +36,8 @@ Usage
 
 You may configure these environment variable below accordingly
 ```dotenv
-HEALTH_API_KEY= # used to secure and enable /health-check endpoint
+HEALTH_API_ROUTE_ENABLED= # enable /health-check endpoint - default: false
+HEALTH_API_KEY= # used to secure /health-check endpoint
 HEALTH_API_PACKAGES= # packages ( comma separated ) to have its versions checked
 ```
 

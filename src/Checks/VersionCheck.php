@@ -18,8 +18,7 @@ class VersionCheck extends Check
 
         $meta = $this->getResultMeta();
         $result->meta($meta);
-        Log::withContext($meta)
-            ->info('health');
+        Log::withContext($meta)->info('health');
 
         return $result->ok();
     }
@@ -29,10 +28,12 @@ class VersionCheck extends Check
         $mysql = DB::select('select version()')[0]->{'version()'};
 
         return [
-            'php' => phpversion(),
-            'laravel' => app()->version(),
-            'mysql' => $mysql,
-            'packages' => $this->getPackagesVersions(),
+            'health' => [
+                'php' => phpversion(),
+                'laravel' => app()->version(),
+                'mysql' => $mysql,
+                'packages' => $this->getPackagesVersions(),
+            ],
         ];
     }
 

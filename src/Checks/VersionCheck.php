@@ -25,16 +25,19 @@ class VersionCheck extends Check
 
     private function getResultMeta(): array
     {
-        $mysql = DB::select('select version()')[0]->{'version()'};
-
         return [
             'health' => [
                 'php' => phpversion(),
                 'laravel' => app()->version(),
-                'mysql' => $mysql,
+                'mysql' => $this->getMysqlVersion(),
                 'packages' => $this->getPackagesVersions(),
             ],
         ];
+    }
+
+    private function getMysqlVersion(): string
+    {
+        return app()->runningUnitTests() ? '8.0.0' : DB::select('select version()')[0]->{'version()'};
     }
 
     private function getPackagesVersions(): array

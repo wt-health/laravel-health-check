@@ -24,7 +24,6 @@ class LaravelHealthCheckServiceProvider extends PackageServiceProvider
     public function packageRegistered(): void
     {
         Config::set('health.result_stores', [InMemoryHealthResultStore::class]);
-
         Health::checks([
             VersionCheck::new(),
         ]);

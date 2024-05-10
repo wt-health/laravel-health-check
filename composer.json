@@ -6,13 +6,18 @@
         "composer/composer": "^2",
         "spatie/laravel-health": "^1.27",
         "php": "^8.2|^8.3",
-        "illuminate/support": "^9.0|^10.0"
+        "illuminate/support": "^9.0|^10.0|^11.0"
     },
     "homepage": "https://github.com/wt-health/laravel-health-check",
     "license": "MIT",
     "autoload": {
         "psr-4": {
             "Webtools\\LaravelHealthCheck\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Webtools\\LaravelHealthCheck\\Tests\\": "tests"
         }
     },
     "extra": {
@@ -34,6 +39,13 @@
     "prefer-stable": true,
     "scripts": {
         "pint": "vendor/bin/pint --test",
-        "pint-fix": "vendor/bin/pint"
+        "pint-fix": "vendor/bin/pint",
+        "test": "vendor/bin/phpunit --colors=always"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^7.0|^8.0|^9.0",
+        "phpunit/phpunit": "^11",
+        "timacdonald/log-fake": "^2.2",
+        "laravel/pint": "^1.15"
     }
 }

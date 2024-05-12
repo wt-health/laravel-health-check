@@ -52,6 +52,8 @@ jobs:
         run: tar -xf vendor.tar vendor
       - name: PHP Coding Standards
         run: composer pint
+      - name: PHPStan Static Analysis
+        run: composer phpstan
 
   test:
     timeout-minutes: 20

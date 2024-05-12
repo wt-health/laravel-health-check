@@ -23,6 +23,9 @@ class VersionCheck extends Check
         return $result->ok();
     }
 
+    /**
+     * @return  array<string,array{php: string, laravel: string, mysql: string, packages: array<string,string>}>
+     */
     private function getResultMeta(): array
     {
         return [
@@ -40,9 +43,14 @@ class VersionCheck extends Check
         return app()->runningUnitTests() ? '8.0.0' : DB::select('select version()')[0]->{'version()'};
     }
 
+    /**
+     * @return  array<string,string>
+     */
     private function getPackagesVersions(): array
     {
-        return collect(config('health-check.packages'))->mapWithKeys(function (string $package) {
+        /** @var array<string> $packages */
+        $packages = config('health-check.packages');
+        return collect($packages)->mapWithKeys(function (string $package) {
             return [$package => InstalledVersions::getPrettyVersion($package)];
         })->toArray();
     }

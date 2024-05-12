@@ -6,3 +6,4 @@ composer.lock
 _ide_helper*
 .idea/
 .phpunit.cache
+build

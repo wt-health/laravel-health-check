@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Webtools\LaravelHealthCheck\Tests;
 
 use Composer\Composer;
-use Illuminate\Console\Application;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Orchestra\Testbench\Attributes\DefineEnvironment;

@@ -24,7 +24,7 @@ class VersionCheck extends Check
     }
 
     /**
-     * @return  array<string,array{php: string, laravel: string, mysql: string, packages: array<string,string>}>
+     * @return array<string,array{php: string, laravel: string, mysql: string, packages: array<string,string>}>
      */
     private function getResultMeta(): array
     {
@@ -44,12 +44,13 @@ class VersionCheck extends Check
     }
 
     /**
-     * @return  array<string,string>
+     * @return array<string,string>
      */
     private function getPackagesVersions(): array
     {
         /** @var array<string> $packages */
         $packages = config('health-check.packages');
+
         return collect($packages)->mapWithKeys(function (string $package) {
             return [$package => InstalledVersions::getPrettyVersion($package)];
         })->toArray();

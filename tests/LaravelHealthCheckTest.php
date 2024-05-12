@@ -24,26 +24,26 @@ class LaravelHealthCheckTest extends TestCase
 
     #[Test]
     #[DefineEnvironment('defineEnv')]
-    public function test_route_works()
+    public function test_route_works(): void
     {
         $this->get('/health-check?key=test-key')->assertOk();
     }
 
     #[Test]
     #[DefineEnvironment('defineEnv')]
-    public function test_route_returns_403_when_no_key_is_used()
+    public function test_route_returns_403_when_no_key_is_used(): void
     {
         $this->get('/health-check')->assertForbidden();
     }
 
-    public function test_route_returns_404_when_disabled()
+    public function test_route_returns_404_when_disabled(): void
     {
         $this->get('/health-check')->assertNotFound();
     }
 
     #[Test]
     #[DefineEnvironment('defineEnv')]
-    public function test_version_check_artisan()
+    public function test_version_check_artisan(): void
     {
         LogFake::bind();
         Artisan::call('health:check');

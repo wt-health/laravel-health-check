@@ -1,6 +1,7 @@
 Laravel Health Check
 ================================
 
+[![Test CI](https://github.com/wt-health/laravel-health-check/actions/workflows/test.yml/badge.svg)](https://github.com/wt-health/laravel-health-check/actions/workflows/test.yml)
 
 Adds custom version check based on [spatie/laravel-health](https://github.com/spatie/laravel-health) 
 

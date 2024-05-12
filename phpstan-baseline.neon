@@ -1,0 +1,11 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined static method Illuminate\\\\Support\\\\Facades\\\\Log\\:\\:assertLogged\\(\\)\\.$#"
+			count: 1
+			path: tests/LaravelHealthCheckTest.php
+
+		-
+			message: "#^Method Webtools\\\\LaravelHealthCheck\\\\Tests\\\\LaravelHealthCheckTest\\:\\:defineEnv\\(\\) has parameter \\$app with no type specified\\.$#"
+			count: 1
+			path: tests/LaravelHealthCheckTest.php

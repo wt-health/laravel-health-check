@@ -1,7 +1,10 @@
-name: 'Test CI'
+name: 'Lint & Tests'
 on:
   workflow_dispatch:
   pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   composer:
@@ -52,6 +55,8 @@ jobs:
         run: tar -xf vendor.tar vendor
       - name: PHP Coding Standards
         run: composer pint
+      - name: PHPStan Static Analysis
+        run: composer phpstan
 
   test:
     timeout-minutes: 20
@@ -73,5 +78,5 @@ jobs:
           name: composer
       - name: UnTar files # to keep right permissions
         run: tar -xf vendor.tar vendor
-      - name: PHP Coding Standards
+      - name: PHP Unit Test
         run: composer test

@@ -78,5 +78,5 @@ jobs:
           name: composer
       - name: UnTar files # to keep right permissions
         run: tar -xf vendor.tar vendor
-      - name: PHP Coding Standards
+      - name: PHP Unit Test
         run: composer test

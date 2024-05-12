@@ -4,6 +4,32 @@ on:
   pull_request:
 
 jobs:
+  composer:
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.3
+          extensions: dom, bcmath, curl, libxml, gettext, exif, iconv, intl, mbstring, gd, imagick, soap, sockets, zip, pcntl, pdo, mysql, pdo_mysql
+          coverage: pcov
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Composer Install
+        run: composer install
+      - name: Tar files # to keep right permissions
+        run: tar -cvf vendor.tar vendor
+      - name: Store artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: composer
+          path: vendor.tar
+
+
   lint:
     timeout-minutes: 20
     runs-on: ubuntu-latest
@@ -18,8 +44,13 @@ jobs:
           php-version: 8.3
           extensions: dom, bcmath, curl, libxml, gettext, exif, iconv, intl, mbstring, gd, imagick, soap, sockets, zip, pcntl, pdo, mysql, pdo_mysql
           coverage: pcov
-      - name: Composer Install
-        run: composer install
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: composer
+          path: vendor.tar
+      - name: UnTar files # to keep right permissions
+        run: tar -xvf vendor.tar vendor
       - name: PHP Coding Standards
         run: composer pint
 
@@ -37,7 +68,12 @@ jobs:
           php-version: 8.3
           extensions: dom, bcmath, curl, libxml, gettext, exif, iconv, intl, mbstring, gd, imagick, soap, sockets, zip, pcntl, pdo, mysql, pdo_mysql
           coverage: pcov
-      - name: Composer Install
-        run: composer install
+      - name: Download artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: composer
+          path: vendor.tar
+      - name: UnTar files # to keep right permissions
+        run: tar -xvf vendor.tar vendor
       - name: PHP Coding Standards
         run: composer test

@@ -1,5 +1,5 @@
 {
-    "name": "wthealth/laravel-health-check",
+    "name": "wt-health/laravel-health-check",
     "description": "Check versions of vital parts of the application",
     "require": {
         "spatie/laravel-package-tools": "^1.16.4",

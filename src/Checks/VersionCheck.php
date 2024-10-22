@@ -52,7 +52,7 @@ class VersionCheck extends Check
         $packages = config('health-check.packages');
 
         return collect($packages)->mapWithKeys(function (string $package) {
-            return [$package => InstalledVersions::getPrettyVersion($package)];
+            return [str_replace('/', '-', $package) => InstalledVersions::getPrettyVersion($package)];
         })->toArray();
     }
 }

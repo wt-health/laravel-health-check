@@ -55,7 +55,7 @@ class LaravelHealthCheckTest extends TestCase
                     'php' => phpversion(),
                     'laravel' => app()->version(),
                     'mysql' => '8.0.0',
-                    'packages' => ['composer/composer' => Composer::getVersion()],
+                    'packages' => [str_replace('/', '-', 'composer/composer') => Composer::getVersion()],
                 ]]
         );
     }

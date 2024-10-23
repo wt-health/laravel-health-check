@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Parameter \\#2 \\$string of function explode expects string, bool\\|string given\\.$#"
+			count: 1
+			path: config/health-check.php
+
+		-
 			message: "#^Call to an undefined static method Illuminate\\\\Support\\\\Facades\\\\Log\\:\\:assertLogged\\(\\)\\.$#"
 			count: 1
 			path: tests/LaravelHealthCheckTest.php

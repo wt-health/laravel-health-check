@@ -66,7 +66,7 @@ class LaravelHealthCheckTest extends TestCase
 
     #[Test]
     #[DefineEnvironment('defineEnv')]
-    public function test_version_check_should_return_NA_when_no_engine_block_is_set(): void
+    public function test_version_check_should_return_n_a_when_no_engine_block_is_set(): void
     {
 
         File::partialMock()->shouldReceive('get')->andReturn('{}');

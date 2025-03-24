@@ -17,7 +17,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
           extensions: dom, bcmath, curl, libxml, gettext, exif, iconv, intl, mbstring, gd, imagick, soap, sockets, zip, pcntl, pdo, mysql, pdo_mysql
           coverage: pcov
         env:
@@ -44,7 +44,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
           extensions: dom, bcmath, curl, libxml, gettext, exif, iconv, intl, mbstring, gd, imagick, soap, sockets, zip, pcntl, pdo, mysql, pdo_mysql
           coverage: pcov
       - name: Download artifacts
@@ -69,7 +69,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
           extensions: dom, bcmath, curl, libxml, gettext, exif, iconv, intl, mbstring, gd, imagick, soap, sockets, zip, pcntl, pdo, mysql, pdo_mysql
           coverage: pcov
       - name: Download artifacts
@@ -79,4 +79,10 @@ jobs:
       - name: UnTar files # to keep right permissions
         run: tar -xf vendor.tar vendor
       - name: PHP Unit Test
-        run: composer test
+        run: ./vendor/bin/phpunit --coverage-clover=coverage.clover
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.6.0
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: wt-health/laravel-health-check
+          files: ./coverage.clover

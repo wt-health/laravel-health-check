@@ -6,8 +6,13 @@ parameters:
 			path: config/health-check.php
 
 		-
+			message: "#^Call to an undefined method Mockery\\\\ExpectationInterface\\|Mockery\\\\HigherOrderMessage\\:\\:andReturn\\(\\)\\.$#"
+			count: 2
+			path: tests/LaravelHealthCheckTest.php
+
+		-
 			message: "#^Call to an undefined static method Illuminate\\\\Support\\\\Facades\\\\Log\\:\\:assertLogged\\(\\)\\.$#"
-			count: 1
+			count: 2
 			path: tests/LaravelHealthCheckTest.php
 
 		-

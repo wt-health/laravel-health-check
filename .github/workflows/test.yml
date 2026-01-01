@@ -27,7 +27,7 @@ jobs:
       - name: Tar files # to keep right permissions
         run: tar -cf vendor.tar vendor
       - name: Store artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: composer
           path: vendor.tar

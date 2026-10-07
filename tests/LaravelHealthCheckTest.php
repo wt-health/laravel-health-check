@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Webtools\LaravelHealthCheck\Tests;
 
 use Composer\Composer;
+use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Log;
 use Orchestra\Testbench\Attributes\DefineEnvironment;
@@ -14,7 +15,7 @@ use TiMacDonald\Log\LogFake;
 
 class LaravelHealthCheckTest extends TestCase
 {
-    protected function defineEnv($app): void
+    protected function defineEnv(Application $app): void
     {
         $app['config']->set('health-check.route.enabled', true);
         $app['config']->set('health-check.key', 'test-key');

@@ -85,7 +85,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Install dependencies (Laravel ${{ matrix.laravel }})
-        run: composer update "illuminate/support:^${{ matrix.laravel }}.0" "orchestra/testbench:^${{ matrix.testbench }}.0" --with-all-dependencies --prefer-dist --no-interaction --no-progress
+        # composer.lock isn't committed, so pin the matrix versions in composer.json and do a full update
+        run: |
+          composer require "illuminate/support:^${{ matrix.laravel }}.0" --no-update --no-interaction
+          composer require --dev "orchestra/testbench:^${{ matrix.testbench }}.0" --no-update --no-interaction
+          composer update --with-all-dependencies --prefer-dist --no-interaction --no-progress
       - name: PHP Unit Test
         run: ./vendor/bin/phpunit --coverage-clover=coverage.clover
       - name: Upload coverage reports to Codecov

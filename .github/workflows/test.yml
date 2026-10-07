@@ -72,6 +72,10 @@ jobs:
             testbench: '10'
           - laravel: '13'
             testbench: '11'
+          # Support floor (php ^8.3, Laravel 11) without expanding the full matrix
+          - php: '8.3'
+            laravel: '11'
+            testbench: '9'
     steps:
       - uses: actions/checkout@v6
         with:
